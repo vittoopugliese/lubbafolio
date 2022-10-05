@@ -66,6 +66,7 @@ h1 {
 .image {
   width: 300px;
   transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  filter: brightness(0.9) saturate(0.95);
 }
 .image:hover {
   filter: brightness(1.1) saturate(1.05);

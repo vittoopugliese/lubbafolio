@@ -1,6 +1,6 @@
 const imagesContainer = document.querySelector(".imagesContainer");
 
-for (let i = 1; i < 12; i++) {
+for (let i = 1; i < 13; i++) {
   imagesContainer.innerHTML += `<img class="image" src="assets/m (${i}).png" draggable=false alt="lubba image">`;
 }
 
