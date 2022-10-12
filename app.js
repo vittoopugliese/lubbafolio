@@ -8,24 +8,49 @@ const html = document.querySelector("html");
 const modal = document.querySelector(".modal");
 const modalBg = document.querySelector(".modalBg");
 const imageModal = document.querySelector(".imageModal");
+const toRight = document.querySelector(".toRight");
+const toLeft = document.querySelector(".toLeft");
 
 window.addEventListener("DOMContentLoaded", () => {
   const images = document.querySelectorAll(".image");
+
   for (let i = 0; i < 12; i++) {
     images[i].addEventListener("click", () => {
-      imageModal.innerHTML = `<img class="modalImage" draggable=false src="${images[i].getAttribute("src")}" >`;
-      modal.style.display = "flex";
-      modalBg.style.display = "flex";
-      setTimeout(() => {
-        modal.style.opacity = "1";
-        modalBg.style.opacity = "1";
-        html.style.overflow = "hidden";
-      }, 154);
+
+      let p = 0;
+      showModal();
+      replaceImage(images, i, p);
+
+      toRight.addEventListener("click", () => {
+        p++;
+        replaceImage(images, i, p);
+      });
+
+      toLeft.addEventListener("click", () => {
+        p--;
+        replaceImage(images, i, p);
+      });
+
     });
   }
 });
 
-modalBg.addEventListener("click", closeModal);
+function replaceImage(images, i, p) {
+  (i + p == 0) ? toLeft.style.display = 'none' : toLeft.style.display = 'flex';
+  (i + p == 11) ? toRight.style.display = 'none' : toRight.style.display = 'flex';
+  imageModal.innerHTML = `<img class="modalImage" draggable=false src="${images[i + p].getAttribute("src")}" >`;
+}
+
+function showModal() {
+  modal.style.display = "flex";
+  modalBg.style.display = "flex";
+  setTimeout(() => {
+    modal.style.opacity = "1";
+    modalBg.style.opacity = "1";
+    html.style.overflow = "hidden";
+  }, 154);
+}
+
 function closeModal() {
   modal.style.opacity = "0";
   modalBg.style.opacity = "0";
@@ -35,3 +60,5 @@ function closeModal() {
     html.style.overflow = "auto";
   }, 200);
 }
+
+modalBg.addEventListener("click", closeModal);
