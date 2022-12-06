@@ -25,6 +25,24 @@ a {
 *:after {
   box-sizing: inherit;
 }
+/* main */
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px auto;
+}
+.mainContentImage{
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 0px auto;
+  z-index: 1000000;
+}
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
